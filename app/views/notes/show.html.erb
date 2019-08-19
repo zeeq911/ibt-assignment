@@ -1,0 +1,14 @@
+<h1> Notes</h1>
+<div class="container">
+  <div class="row ">
+    <% @notes.each do |note|%>
+        <div class="col-4 px-1 my-2">
+          <div class="mw-75 bg-warning px-1 h-100">
+            <p> <%= "#{note.content} #{note.owner_id}" %> </p>
+          </div>
+        </div>
+    <%end%>
+  </div>
+</div>
+
+
