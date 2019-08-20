@@ -1,6 +1,11 @@
 <h1> Notes</h1>
 <div class="container">
   <div class="row ">
+  <div class="col-12">
+<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+ </div>
+</div>
+  <div class="row ">
     <% @notes.each do |note|%>
         <div class="col-4 px-1 my-2">
           <div class="mw-75 bg-warning px-1 h-100">
