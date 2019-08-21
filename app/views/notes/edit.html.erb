@@ -1,15 +1,20 @@
 <%= form_for(@note,html:{class:"my-4 center"})  do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="form-row">
-        <div class="col-12">
+        <div class="col">
             <div class="form-group">
                 <%= f.text_area :content, value:@note.content, placeholder: "Delete note",class:"form-control" %>
             </div>
         </div>
+        <% if @note.picture? %>
+            <div class="col">
+            <%= image_tag @note.picture.url %>
+            </div>
+        <%end %>
         <div class="col-12 d-flex justify-content-end">
             <%= f.submit "Save", class: "btn btn-primary" %>
             <%if current_user.id == @note.user_id %>
-                <%= link_to  "Delete", note_path, method: :delete, class:"btn btn-danger ml-3" %>
+                <%= link_to  "Delete", note_path, method: :delete,data: { confirm: "You sure?" }, class:"btn btn-danger ml-3" %>
             <%end %>
         </div>
     </div>

@@ -10,10 +10,19 @@
   </div>
   <div class="row ">
     <% @notes.each do |note|%>
-        <div class="col-4 px-1 my-2">
+        <div class="col-md-4 px-1 my-2">
         <%= link_to  edit_note_path(note), method: :get do %>
           <div class="mw-75 bg-warning px-1 h-100">
-            <p> <%= "#{note.content} #{note.user_id}" %> </p>
+            <div class="row">
+              <% if note.picture? %>
+                  <div class="col d-flex align-content-center justify-content-center">
+                  <%= image_tag note.picture.url,class:"img-fluid" %>
+                  </div>
+              <%end %>
+              <div class="col">
+                <p> <%= "#{note.content} #{note.user_id}" %> </p>
+              </div>
+            </div>
           </div>
         </div>
         <% end %>
