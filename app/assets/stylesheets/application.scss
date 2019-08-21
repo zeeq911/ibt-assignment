@@ -1,2 +1,21 @@
 @import "/*";
 @import "bootstrap";
+$error-color:#ff5353;
+#error_explanation {
+    color:$error-color;
+    background: #ffcaca;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    ul {
+      color: $error-color;
+      margin: 0 0 30px 0;
+    }
+  }
+  
+  .field_with_errors {
+    @extend .has-error !optional;
+    .form-control {
+      color: $error-color;
+    }
+  }
