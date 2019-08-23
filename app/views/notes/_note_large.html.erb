@@ -1,0 +1,12 @@
+  <div class="card note-bg">
+    <div class="w-100 note_top" ></div>
+        <% if note.picture? %>
+            <%= image_tag note.picture.url,class:"card-img-top p-2" %>
+        <%end %>
+    <div class="card-body">
+      <p class="card-text"><%= note.content%></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Created <%= time_ago_in_words(note.created_at) %> ago</small>
+    </div>
+  </div>

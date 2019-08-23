@@ -1,21 +1,31 @@
+<h1>Edit Note</h1>
 <%= form_for(@note,html:{class:"my-4 center"})  do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="form-row">
         <div class="col">
-            <div class="form-group">
-                <%= f.text_area :content, value:@note.content, placeholder: "Delete note",class:"form-control" %>
+            <div class="card note-bg">
+                <div class="w-100 note_top" ></div>
+                <%= f.text_area :content, placeholder: "Compose new note", class:"note-form w-100" %>
             </div>
         </div>
-        <% if @note.picture? %>
-            <div class="col">
-            <%= image_tag @note.picture.url %>
-            </div>
-        <%end %>
-        <div class="col-12 d-flex justify-content-end">
-            <%= f.submit "Save", class: "btn btn-primary" %>
-            <%if current_user.id == @note.user_id %>
-                <%= link_to  "Delete", note_path, method: :delete,data: { confirm: "You sure?" }, class:"btn btn-danger ml-3" %>
-            <%end %>
+        <div class="col-12 d-flex justify-content-end mt-4">
+            <%= f.submit "Save", class: "btn btn-success" %>
         </div>
     </div>
 <% end %>
+<%if current_user.id == @note.user_id %>
+<h1>Share Note</h1>
+    <%= form_for :shared_note, url: note_path do |f| %>
+    <div class="form-row">
+        <div class="col-md-10" >    
+            <div class="form-group h-100">
+                <%= f.email_field :email, placeholder: "Enter the email you want to share the note with",class:"form-control h-100" %>
+            </div>
+        </div>
+        <div class="col-md-2 mt-2 mt-md-0" >
+            <%= f.submit "Share", class: "btn btn-primary h-100 w-100" %>
+        </div>
+        <%= f.hidden_field :note_id ,value:@note.id %>
+    </div>
+    <%end%>
+<%end%>

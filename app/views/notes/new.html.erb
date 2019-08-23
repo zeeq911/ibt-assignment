@@ -1,20 +1,23 @@
+<h1>Create New Note</h1>
 <%= form_for(@notes) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <div class="form-group">
-        <%= f.text_area :content, placeholder: "Compose new note",class:"form-control" %>
-    </div>
-    <div class="form-group">
-            <%= f.file_field :picture,accept: 'image/jpeg,image/jpg,image/gif,image/png',id:"img-input" ,class:"form-control" %>
+  <div class="card note-bg mt-4">
+    <div class="w-100 note_top" ></div>
+      <%= f.text_area :content, placeholder: "Compose new note", class:"note-form w-100" %>
+  </div>
+    <div class="form-group mt-4">
+      <%= f.label :picture , "Add an Image to your note"%>
+      <%= f.file_field :picture,accept: 'image/jpeg,image/jpg,image/gif,image/png',id:"img-input" ,class:"form-control" %>
     </div>
     <%= f.submit "Create", class: "btn btn-primary" %>
 <% end %>
 
 <script type="text/javascript">
   $('#img-input').bind('change', function() {
-    var size_in_megabytes = $('#img-input')[0].files[0].size/1024;
+    var size_in_megabytes = $('#img-input')[0].files[0].size/1024/1024;
     if (size_in_megabytes > 5) {
       alert('Maximum file size is 5MB. Please choose a smaller file.');
-
+        $('#img-input').val('');
     }
   });
 </script>

@@ -1,33 +1,15 @@
-<h1> Notes</h1>
+<h1> Note</h1>
 <div class="container">
   <div class="row ">
-    <div class="col-12">
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-    </div>
-    <div class="col-12">
-      <%= link_to "New", new_note_path, method: :get %>
-    </div>
-  </div>
-  <div class="row ">
-    <% @notes.each do |note|%>
-        <div class="col-md-4 px-1 my-2">
-        <%= link_to  edit_note_path(note), method: :get do %>
-          <div class="mw-75 bg-warning px-1 h-100">
-            <div class="row">
-              <% if note.picture? %>
-                  <div class="col d-flex align-content-center justify-content-center">
-                  <%= image_tag note.picture.url,class:"img-fluid" %>
-                  </div>
-              <%end %>
-              <div class="col">
-                <p> <%= "#{note.content} #{note.user_id}" %> </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% end %>
-    <%end%>
+      <div class="col-12 d-flex justify-content-end">
+        <%= link_to  "Edit", edit_note_path(@note), method: :get ,class:"btn btn-warning" %>
+        <%if current_user.id == @note.user_id %>
+          <%= link_to  "Share", edit_note_path(@note), method: :get ,class:"btn btn-primary ml-3" %>
+          <%= link_to  "Delete", note_path, method: :delete,data: { confirm: "You sure?" }, class:"btn btn-danger ml-3" %>                
+        <%end %>
+      </div>
+      <div class="col-12 px-1 my-2">
+          <%= render 'note_large', note: @note %> 
+      </div>
   </div>
 </div>
-
-

@@ -1,0 +1,17 @@
+<h1> Notes</h1>
+<div class="position-fixed new-note-btn-container">
+  <%= link_to "+", new_note_path, method: :get,class:"center btn btn-primary new-note-btn rounded-circle" %>
+</div>
+<div class="container">
+  <div class="row ">
+    <div class="col-12 my-2">
+      <div class="card-columns">
+        <% @notes.each do |note|%>
+              <%= render 'note_small', note: note %>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+
+

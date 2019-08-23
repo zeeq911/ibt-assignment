@@ -1,6 +1,10 @@
 @import "/*";
 @import "bootstrap";
+
+$note_bg: #fff2ab;
+$note_top: #ffbb81;
 $error-color:#ff5353;
+
 #error_explanation {
     color:$error-color;
     background: #ffcaca;
@@ -18,4 +22,43 @@ $error-color:#ff5353;
     .form-control {
       color: $error-color;
     }
-  }
+}
+
+.note_img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.note_container{
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.note_top{
+  background-color: rgba($color: #000000, $alpha: 0.2);
+  height: 20px;
+}
+.note-bg{
+  background-color: $note_bg;
+}
+.note-form{
+  height: 297px;
+  background: transparent;
+  border: 0px none;
+  padding: 20px;
+}
+
+.new-note-btn-container{
+  bottom: 5%;
+  right: 10%;
+  z-index: 2;
+}
+.new-note-btn{
+  font-weight: bolder;
+  height: 65px;
+  width: 65px;
+  color: white;
+  padding: 0;
+  margin: 0;
+  font-size: 45px;
+}

@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <%= link_to  "Da Notes", root_path, class:"navbar-brand" %>
+  <% if user_signed_in? %>
+  <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <%= link_to "New Note", new_note_path, method: :get,class:"nav-link"  %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sign Out",destroy_user_session_path, method: :delete,class:"nav-link" %>
+      </li>
+    </ul>
+  </div>
+  <%= link_to image_tag(if current_user.profile_picture? then current_user.profile_picture.url else 'defaultPP.png' end,class:"img-fluid rounded-circle", size: "40x40"),edit_user_registration_path, method: :get,class:"nav-link p-0 ml-2" %>
+  <%end %>
+</nav>
