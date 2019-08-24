@@ -1,17 +1,28 @@
 <h2>Change Profile Picture</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
+    <div class="form-group">
+      <%= image_tag(if current_user.profile_picture? then current_user.profile_picture.url else 'defaultPP.png' end,class:"rounded-circle my-4", size: "200x200") %>
+      <%= f.file_field :profile_picture,accept: 'image/jpeg,image/jpg,image/gif,image/png',id:"img-input" ,class:"form-control" %>
+      <%= f.hidden_field :profile_picture_cache %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password",class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update Profile Picture",class: "btn btn-primary" %>
+    </div>
+<% end %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-  
-    <div class="form-group">
-      <%= image_tag(if current_user.profile_picture? then current_user.profile_picture.url else 'defaultPP.png' end,class:"img-fluid rounded-circle", size: "200x200") %>
-      <%= f.file_field :profile_picture,accept: 'image/jpeg,image/jpg,image/gif,image/png',id:"img-input" ,class:"form-control" %>
-      <%= f.hidden_field :profile_picture_cache %>
-    </div>
 
-<h2>Change Password</h2>
+<h2 class="mt-4" >Change Password</h2>
 
 
   <div class="form-group">
@@ -34,7 +45,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update",class: "btn btn-primary" %>
+    <%= f.submit "Update Password",class: "btn btn-primary" %>
   </div>
 <% end %>
 

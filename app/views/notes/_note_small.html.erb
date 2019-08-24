@@ -1,15 +1,16 @@
 <div class="card note-bg">
-<%= link_to  note_path(note), method: :get,class:"nav-link p-0" do %>
-    <div class="w-100 note_top" ></div>
-        <% if note.picture? %>
-            <%= image_tag note.picture.url,class:"card-img-top p-2" %>
-        <%end %>
-    <div class="card-body">
-      <p class="card-text"><%= note.content%></p>
-    </div>
+  <%= link_to  note_path(note), method: :get,class:"nav-link p-0" do %>
+      <div class="w-100 note_top" ></div>
+          <% if note.picture? %>
+              <%= image_tag 'tape.png',class:"note-tape" %>
+              <%= image_tag note.picture.url,class:"card-img-top note_img" %>
+          <%end %>
+      <div class="card-body">
+        <p class="card-text"><%= note.content%></p>
+      </div>
 
-<% end %>
-    <div class="card-footer">
-      <small class="text-muted">Created <%= time_ago_in_words(note.created_at) %> ago</small>
-    </div>
+  <% end %>
+  <div class="card-footer">
+    <small class="text-muted">Created <%= time_ago_in_words(note.created_at) %> ago <%= fa_icon "share-alt" if note.user_id != current_user.id %></small>
+  </div>
 </div>

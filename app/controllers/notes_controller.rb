@@ -40,7 +40,7 @@ class NotesController < ApplicationController
     if @note.save
       redirect_to root_path
     else
-      render edit
+      render 'edit'
     end
   end
 
@@ -57,10 +57,16 @@ class NotesController < ApplicationController
         if @shared_note.save
           redirect_to root_path
           return
+        else
+          render 'edit'
+          return
         end
+      else
       end
     end 
-    render html: note_error
+    @note = Note.find(params[:id])
+    @note.errors.add(:base, note_error)
+    render 'edit'
   end
 
   private

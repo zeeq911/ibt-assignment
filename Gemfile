@@ -13,7 +13,7 @@ gem 'bootstrap',    '~> 4.0.0'
 gem 'devise'
 gem 'carrierwave',             '1.2.2'
 gem 'mini_magick',             '4.7.0'
-
+gem "font-awesome-rails"
 group :development, :test do
   gem 'sqlite3', '1.3.13'
   gem 'byebug',  '9.0.6', platform: :mri
