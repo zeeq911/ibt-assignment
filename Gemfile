@@ -11,7 +11,7 @@ gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 gem 'bootstrap',    '~> 4.0.0'
 gem 'devise'
-gem 'carrierwave',             '1.2.2'
+gem 'carrierwave',             '1.3.2'
 gem "font-awesome-rails"
 group :development, :test do
   gem 'sqlite3', '1.3.13'
